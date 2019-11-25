@@ -1,8 +1,10 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
 
+app.use(bodyParser.urlencoded({ extended: false}));
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
@@ -11,6 +13,14 @@ app.get('/', (req, res) => {
 
 app.get('/cards', (req, res) => {
 	res.render('card', { prompt: "Who is buried in Grant's tomb?" });
+});
+
+app.get('/hello', (req, res) => {
+	res.render('hello');
+});
+
+app.post('/hello', (req, res) => {
+	res.render('hello', { name: req.body.username });
 });
 
 app.listen(port, () => {

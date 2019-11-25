@@ -3,8 +3,16 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-app.get('/', (request, response) => {
-	response.send('It works');
+app.set('view engine', 'pug');
+
+app.get('/', (req, res) => {
+	res.render('index');
 });
 
-app.listen(port);
+app.get('/hello', (req, res) => {
+	res.send('<h1>Hello, user<h1>');
+});
+
+app.listen(port, () => {
+	console.log(`Application running on localhost:${port}`);
+});

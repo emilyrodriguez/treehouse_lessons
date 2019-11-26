@@ -1,12 +1,8 @@
 doctype html
 html(lang="en")
-	head
-		title Flashcards
-	body
-		include includes/header.pug
-		if name
-			h2 Welcome, #{name}!
-			form(action='/goodbye', method='POST')
-				button(type='submit') Goodbye
-		block content
-		include includes/footer.pug
+  head
+    title Flash Cards
+    link(rel='stylesheet', href='/static/stylesheets/style.css')
+  body
+    include includes/header.pug
+    block main

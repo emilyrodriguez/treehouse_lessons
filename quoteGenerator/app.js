@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-
+const routes = require('./routes');
 const records = require('./records');
 
 app.use(express.json());
+app.use('/api', routes);
 
 app.use((req, res, next) => {
 	const err = new Error("Not found.");

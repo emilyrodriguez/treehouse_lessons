@@ -32,6 +32,13 @@ router.get('/quotes/:id', async (req, res)=>{
     }
 });
 
+// Send a GET request to /quotes/quote/random to READ (view) a random quote
+router.get('/quotes/quote/random', asyncHandler(async(req,res,next) => {
+	const quote = await records.getRandomQuote();
+	res.json(quote);
+}));
+
+//Send a POST request to /quotes to UPDATE a quote
 router.post('/quotes', asyncHandler( async (req, res)=>{
     if(req.body.author && req.body.quote){
         const quote = await records.createQuote({
@@ -69,10 +76,5 @@ router.delete("/quotes/:id", async(req,res, next) => {
         next(err);
     }
 });
-
-
-// Send a GET request to /quotes/quote/random to READ (view) a random quote
-
-
 
 module.exports = router; 

@@ -3,7 +3,7 @@
     {
       "id": 8721,
       "quote": "We must accept finite disappointment, but we must never lose infinite hope.",
-      "author": "Martin Luther King"
+      "author": "Martin Luther King Jr."
     },
     {
       "id": 5779,
@@ -19,6 +19,16 @@
       "quote": "There's no 'I' in team, but there's an 'I' in win.",
       "author": "A winner, probably",
       "id": 9743
+    },
+    {
+      "quote": "There's no place like home",
+      "author": "Dorothy",
+      "id": 67
+    },
+    {
+      "quote": "Hey look, a distraction",
+      "author": "A jerk",
+      "id": 971
     }
   ]
 }

@@ -21,12 +21,27 @@ const { Movie, Person } = db.models;
     });
     console.log(movie2.toJSON());
 
+    const movie3 = await Movie.build({
+      title: 'Toy Story 3',
+      runtime: 103,
+      releaseDate: '2010-06-18',
+      isAvailableOnVHS: false,
+    });
+    await movie3.save();
+    console.log(movie3.toJSON());
+
     // New Person record
     const person = await Person.create({
       firstName: 'Tom',
       lastName: 'Hanks',
     });
     console.log(person.toJSON());
+
+    const person2 = await Person.build({
+	  firstName: 'Brad',
+	  lastName: 'Bird',
+	}); 
+	await person2.save();
 
   } catch (error) {
    	if (error.name === 'SequelizeValidationError') {

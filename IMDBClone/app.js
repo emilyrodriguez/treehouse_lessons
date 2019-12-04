@@ -43,6 +43,16 @@ const { Movie, Person } = db.models;
 	}); 
 	await person2.save();
 
+	const movieById = await Movie.findByPk(1);
+    console.log(movieById.toJSON());
+
+    const movieByRuntime = await Movie.findOne({ where: { runtime: 115 } });
+    console.log(movieByRuntime.toJSON());
+
+    const movies = await Movie.findAll();
+    console.log( movies.map(movie => movie.toJSON()) );
+
+
   } catch (error) {
    	if (error.name === 'SequelizeValidationError') {
       const errors = error.errors.map(err => err.message);

@@ -1,5 +1,6 @@
 const db = require('./db');
 const { Movie, Person } = db.models;
+const { Op } = db.Sequelize;
 
 (async () => {
   await db.sequelize.sync({ force: true });
@@ -21,13 +22,12 @@ const { Movie, Person } = db.models;
     });
     console.log(movie2.toJSON());
 
-    const movie3 = await Movie.build({
+    const movie3 = await Movie.create({
       title: 'Toy Story 3',
       runtime: 103,
       releaseDate: '2010-06-18',
       isAvailableOnVHS: false,
     });
-    await movie3.save();
     console.log(movie3.toJSON());
 
     // New Person record
@@ -37,20 +37,23 @@ const { Movie, Person } = db.models;
     });
     console.log(person.toJSON());
 
-    const person2 = await Person.build({
+    const person2 = await Person.create({
 	  firstName: 'Brad',
 	  lastName: 'Bird',
 	}); 
-	await person2.save();
+	console.log(person2.toJSON());
 
-	const movieById = await Movie.findByPk(1);
-    console.log(movieById.toJSON());
-
-    const movieByRuntime = await Movie.findOne({ where: { runtime: 115 } });
-    console.log(movieByRuntime.toJSON());
-
-    const movies = await Movie.findAll();
-    console.log( movies.map(movie => movie.toJSON()) );
+	//Find all
+	const movies = await Movie.findAll({
+	  attributes: ['id', 'title'],
+	  where: {
+	    title: {
+	      [Op.endsWith]: 'story'
+	    },        
+	  },
+	  order: [['id', 'DESC']]
+	});
+	console.log( movies.map(movie => movie.toJSON()) );
 
 
   } catch (error) {

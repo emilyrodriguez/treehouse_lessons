@@ -1,0 +1,17 @@
+{
+  "name": "IMDBClone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Emily Rodriguez",
+  "license": "ISC",
+  "dependencies": {
+    "sequelize": "^5.21.2",
+    "sqlite3": "^4.1.0"
+  }
+}

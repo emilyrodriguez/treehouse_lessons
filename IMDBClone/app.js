@@ -43,17 +43,20 @@ const { Op } = db.Sequelize;
 	}); 
 	console.log(person2.toJSON());
 
-	//Find all
-	const movies = await Movie.findAll({
-	  attributes: ['id', 'title'],
-	  where: {
-	    title: {
-	      [Op.endsWith]: 'story'
-	    },        
-	  },
-	  order: [['id', 'DESC']]
-	});
-	console.log( movies.map(movie => movie.toJSON()) );
+	//Updating records
+	const toyStory3 = await Movie.findByPk(3);
+	toyStory3.isAvailableOnVHS = true;
+    await toyStory3.save();
+
+    console.log( toyStory3.get({ plain: true }) );
+
+    //Deleting records
+    const toyStory = await Movie.findByPk(1);
+
+    await toyStory.destroy();
+
+    const movies = await Movie.findAll();
+    console.log( movies.map(movie => movie.toJSON()) );
 
 
   } catch (error) {

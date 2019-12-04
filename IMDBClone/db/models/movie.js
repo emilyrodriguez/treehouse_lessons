@@ -16,7 +16,7 @@ module.exports = (sequelize) => {
 	          msg: 'Title cannot be blank.',
 	        },
     		notEmpty: {
-    			msg: "Title cannot be blank.";
+    			msg: "Title cannot be blank.",
     		}
     	},
     },
@@ -25,10 +25,10 @@ module.exports = (sequelize) => {
     	allowNull: false,
     	validate: { 
     		notNull: {
-	          msg: 'Please provide a value for "runtime"',
+	          msg: 'Please provide a value for "runtime".',
 	        },
 	        min: {
-	        	args: 1.
+	        	args: 1,
 	        	msg: "Runtime must be greater than 0 minutes.",
 	        },
     	},
@@ -38,11 +38,11 @@ module.exports = (sequelize) => {
     	allowNull: false,
     	validate: { 
     		notNull: {
-	          msg: 'Please provide a value for "releaseDate"',
+	          msg: 'Please provide a value for "releaseDate".',
 	        },
 	        isAfter: {
 	        	args: '1895-12-27',
-          		msg: 'Release date must be after "1895-12-28"',
+          		msg: 'Release date must be after "1895-12-28".',
 	        },
     	},
     },
